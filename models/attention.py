@@ -107,6 +107,7 @@ class Graph_branch(nn.Module):
 
         out_adj = []
 
+        # crop the graph to map sub-windows
         for i in range(N//attn_kernel_size):
 
             out_adj.append(adj[:, i*attn_kernel_size:(i+1)*attn_kernel_size , i*attn_kernel_size:(i+1)*attn_kernel_size].unsqueeze(1))
