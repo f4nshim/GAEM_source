@@ -83,10 +83,12 @@ class Graph_branch(nn.Module):
     def _prepare_attentional_mechanism_input(self, Wh, adj, attn_kernel_size, therehold = 0.2):
         B,N,F = Wh.size()
 
-        # trick: the therehold split to examine attn_kernel_size
+        # trick: restrict a therehold to examine attn_kernel_size
         x_axis = range(0,N-attn_kernel_size,attn_kernel_size)
         y_axis = range(attn_kernel_size-1,N-1,attn_kernel_size)
-        mean = torch.mean(adj[x_axis,y_axis])
+
+        mean = torch.mean(adj[x_axis,y_axis]) # attention dependencies for distant node pairs in the sub-window
+
         if mean<therehold:
             warnings.warn("attn kernel size too large", SyntaxWarning)
         
