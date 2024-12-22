@@ -30,8 +30,8 @@ train_parser.add_argument('--nlayer', type = list, default=[1,4,1], help='number
 train_parser.add_argument('--droprate', type = float, default=0.1, help='')
 # train settings
 train_parser.add_argument('--epochs', type=int, default=15)
-train_parser.add_argument('--batch_size', type=int, default=64) 
-train_parser.add_argument('--lr', type=float, default=1e-4, help='learning rate')
+train_parser.add_argument('--batch_size', type=int, default=16) 
+train_parser.add_argument('--lr', type=float, default=3e-4, help='learning rate')
 train_parser.add_argument('--weights', type=str, default='./weights/KITTI/288_[1, 4, 1]_0.0001/model.pth', help='the saved model which can be used for continuing training')
 train_parser.add_argument('--device',type=list, default=['cuda:0'], help='device id (i.e. 0 or 0,1 or cpu)')
 
